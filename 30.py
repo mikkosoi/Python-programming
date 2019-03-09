@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+'''
+Append functionality to a assignment 29.
+Add user a possibility to add new items to a file.
+'''
+import sys
+
+def printFile():
+    f = open("animals.txt", "r")
+    elukat = f.readlines()
+    elukat.sort()
+    for i in range(0,len(elukat)):
+        elukat[i]=elukat[i].strip()
+        print elukat[i]
+    print "\n"
+    f.close()
+
+
+def addStuff():
+    f = open("animals.txt", "a")
+    add = raw_input("Anna lisättävä eläin: ")
+    f.write(add+"\r\n")
+    f.close()
+
+def main():
+    while True:
+        print "Valitse toiminto: "
+        print "(T)ulosta aakkostettuna"
+        print "(L)isää listaan"
+        print "Lopeta (Q)"
+        option = raw_input("Valintasi: ")
+
+
+        if option == "T" or option  == "t":
+            printFile()
+        elif option == "L" or option == "l":
+            addStuff()
+        elif option == "Q" or option == "q":
+            sys.exit()
+        else:
+            print "Ei toimintoa käskyllä %s" % option
+
+main()
